@@ -25,8 +25,7 @@
       
       computerSelection = computerPlay();
 
-      let playerScore = 0;
-      let comptuerScore = 0;
+      
 
 // function playRound takes parameters of "playerSelection, computerSelection" to decide who wins the round. playerSelection is inputted through a prompt and is looking for "Rock, Paper, or Scissors". computerSelection is running the computerPlay() function to randomally select "Rock, Paper, Scissors" from the rps array.
 
@@ -54,6 +53,8 @@
       }
 
       function game() {
+        let playerScore = 0;
+        let comptuerScore = 0;
         while (playerScore < 5 || computerScore < 5) {
           playRound(playerSelection, computerSelection);
           } if (playRound(playerSelection, computerSelection) == "you lose") {
