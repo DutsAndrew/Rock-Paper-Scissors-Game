@@ -86,6 +86,16 @@
         console.log(playRound());
         console.log(playRound());
         console.log(playRound());
+
+          if (playerScore === 5) {
+            console.log(`Game over. Player Wins! ${playerScore}`)
+          } else if (computerScore === 5) {
+            console.log(`Game over. Computer Wins! Better luck next time. ${computerScore}`)
+          } else if (playerScore < 5 && computerScore < 5) {
+            runGame();
+          } else {
+            runGame();
+          }
       }
 
       runGame();
