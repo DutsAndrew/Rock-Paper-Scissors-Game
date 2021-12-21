@@ -14,6 +14,9 @@
 // const rps used as the baseline to refer to the 3 strings that can be used in the game.
 
       const rps = ["Rock", "Paper", "Scissors"];
+      
+      let playerScore = 0;
+      let computerScore = 0;
 
 // function computerPlay() is used to select a random string from "rps". Math.Floor sets the number to 0, since Math.Random will select a number between 0 and 1; creating a decimal. Now that Math.Floor has set it to 0 you can fill the function with Math.Random and multiply by rps.length, which is 0-2, since the first string: "Rock" is [0] in the array set. "Paper" is [2]. And "Scissors" is [3].
 
@@ -21,65 +24,78 @@
         return rps[Math.floor(Math.random() * rps.length)];
       }
 
-// function playRound takes parameters of "playerSelection, computerSelection" to decide who wins the round. playerSelection is inputted through a prompt and is looking for "Rock, Paper, or Scissors". computerSelection is running the computerPlay() function to randomally select "Rock, Paper, Scissors" from the rps array.
-
-      function playRound(playerSelection, computerSelection) {
-        playerSelection = prompt("Rock, Paper, or Scissors?");
-        computerSelection = computerPlay();
-        if (playerSelection === "Rock" && computerSelection === "Rock")
-          return("It was a tie, you both choose Rock.")
-        if (playerSelection === "Scissors" && computerSelection === "Scissors")
-          return("It was a tie, you both choose Scissors.")
-        if (playerSelection === "Paper" && computerSelection === "Paper")
-          return("It was a tie, you both choose Paper.")
-        if (playerSelection === "Rock" && computerSelection === "Paper")
-          return("You lose, Paper beats Rock.")
-        if (playerSelection === "Rock" && computerSelection === "Scissors")
-          return("You win, Rock beats Scissors.")
-        if (playerSelection === "Paper" && computerSelection === "Rock")
-          return("You win, Paper beats Rock.")
-        if (playerSelection === "Paper" && computerSelection === "Scissors")
-          return("You lose, Scissors beats Paper.")
-        if (playerSelection === "Scissors" && computerSelection === "Rock")
-          return("You lose, Rock beats Scissors.")
-        if (playerSelection === "Scissors" && computerSelection === "Paper")
-          return("You win, Scissors beats Paper.")
+      function playerPlay() {
+        return prompt("Rock, Paper, or Scissor?")
       }
 
-      // let win, lose, and tie store the returned playround functions with a win, loss, or a tie.
+// function playRound takes parameters of "playerSelection, computerSelection" to decide who wins the round. playerSelection is inputted through a prompt and is looking for "Rock, Paper, or Scissors". computerSelection is running the computerPlay() function to randomally select "Rock, Paper, Scissors" from the rps array.
 
-      // userScore and computerScore set to 0 as a default with a max of 5 for gameScore.
-
-      function roundResult(win, lose, tie) {
-        win = "You win, Rock beats Scissors." || "You win, Paper beats Rock." || "You win, Scissors beats Paper.";
-        lose = "You lose, Paper beats Rock." || "You lose, Scissors beats Paper." || "You lose, Rock beats Scissors.";
-        tie = "It was a tie, you both choose Rock." || "It was a tie, you both choose Scissors." || "It was a tie, you both choose Paper.";
-
-        const maxGameScore = 5
-        let userScore = 0;
-        let computerScore = 0;
-
-        if (playerSelection == "Rock" && computerSelection == "Scissors" || playerSelection == "Paper" && computerSelection == "Rock" || playerSelection == "Scissors" && computerSelection == "Paper") {
-          UserScore++
-          console.log(`User Score: ${userScore} - Computer Score: ${computerScore}`)
-        } else if (playerSelection == "Rock" && computerSelection == "Paper" || playerSelection == "Paper" && computerSelection == "Scissors" || playerSelection == "Scissors" && computerSelection == "Rock") {
-          computerScore++
-          console.log(`User Score: ${userScore} - Computer Score: ${computerScore}`)
-        } else if (playerSelection == "Rock" && computerSelection == "Rock" || playerSelection == "Scissors" && computerSelection == "Scissors" || playerSelection == "Paper" && computerSelection == "Paper") {
-          console.log("Nothing happens, it was a tie")
-          console.log(`User Score: ${userScore} - Computer Score: ${computerScore}`)
+      function playRound() {
+        playerSelection = playerPlay().toLowerCase();
+        computerSelection = computerPlay().toLowerCase();
+        if (playerSelection === "rock" && computerSelection === "rock") {
+          console.log("It was a tie, you both choose rock.")
+          console.log(`User Score: ${playerScore} - Computer Score: ${computerScore}`)
+        } else if (playerSelection === "scissors" && computerSelection === "scissors") {
+            console.log("It was a tie, you both choose scissors.")
+            console.log(`User Score: ${playerScore} - Computer Score: ${computerScore}`)
+        } else if (playerSelection === "paper" && computerSelection === "paper") {
+            console.log("It was a tie, you both choose paper.")
+            console.log(`User Score: ${playerScore} - Computer Score: ${computerScore}`)
+        } else if (playerSelection === "rock" && computerSelection === "paper") {
+            console.log("You lose, paper beats rock.")
+            computerScore++
+            console.log(`User Score: ${playerScore} - Computer Score: ${computerScore}`)
+        } else if (playerSelection === "rock" && computerSelection === "scissors") {
+            console.log("You win, rock beats scissors.")
+            playerScore++
+            console.log(`User Score: ${playerScore} - Computer Score: ${computerScore}`)
+        } else if (playerSelection === "paper" && computerSelection === "rock") {
+            console.log("You win, paper beats rock.")
+            playerScore++
+            console.log(`User Score: ${playerScore} - Computer Score: ${computerScore}`)
+        } else if (playerSelection === "paper" && computerSelection === "scissors") {
+            console.log("You lose, scissors beats paper.")
+            computerScore++
+            console.log(`User Score: ${playerScore} - Computer Score: ${computerScore}`)
+        } else if (playerSelection === "scissors" && computerSelection === "rock") {
+            console.log("You lose, rock beats scissors.")
+            computerScore++
+            console.log(`User Score: ${playerScore} - Computer Score: ${computerScore}`)
+        } else if (playerSelection === "Scissors" && computerSelection === "paper") {
+            console.log("You win, scissors beats paper.")
+            playerScore++
+            console.log(`User Score: ${playerScore} - Computer Score: ${computerScore}`)
         } else {
-          console.log("Something went wrong")
+            console.log("Something went terribly wrong :(")
         }
       }
 
-
       function runGame() {
-        console.log(playRound(roundResult));
-        console.log(playRound(roundResult));
-        console.log(playRound(roundResult));
-        console.log(playRound(roundResult));
-        console.log(playRound(roundResult));
+          if (playerScore === 5) {
+            return("Game over, Player wins.")
+          } else if (computerScore === 5) {
+              return("Game over, Computer wins.")
+          } else if (playerScore < 5 || computerScore < 5) {
+              playRound();
+          } else {
+              playRound();
+          }
+        playRound();
+        playRound();
+        playRound();
+        playRound();
+        playRound();
+        playRound();
+        playRound();
+        playRound();
+        playRound();
+        playRound();
+        playRound();
+        playRound();
+        playRound();
+        playRound();
+        playRound();
       }
 
       runGame();
