@@ -1,7 +1,7 @@
-const buttons = document.querySelector('#choices');
-const rock = document.querySelector('#rock');
-const paper = document.querySelector('#paper');
-const scissors = document.querySelector('#scissors');
+const buttons = document.getElementById('#choices');
+const rock = document.getElementById('#rock');
+const paper = document.getElementById('#paper');
+const scissors = document.getElementById('#scissors');
 
 
 // const rps used as the baseline to refer to the 3 strings that can be used in the game.
@@ -19,7 +19,12 @@ function computerPlay() {
 
 const computerSelection = computerPlay().toLowerCase();
 
-document.getElementById("rockBtn").addEventListener("click", playerSelection);
+const playerSelection = function() {
+}
+
+window.addEventListener('click', function(e) {
+  console.log(e);
+});
 
 // function playRound takes parameters of "playerSelection, computerSelection" to decide who wins the round. playerSelection is inputted through a prompt and is looking for "Rock, Paper, or Scissors". computerSelection is running the computerPlay() function to randomally select "Rock, Paper, Scissors" from the rps array.
 
@@ -70,7 +75,7 @@ function playRound(playerSelection, computerSelection) {
       alert("Something went terribly wrong :(")
 }
 
-function gameEnd(playerscore, computerScore) {
+function game(playerscore, computerScore) {
   if (playerScore === 5) {
     alert(`Game over. Player Wins! ${playerScore}`);
   } else if (computerScore === 5) {
