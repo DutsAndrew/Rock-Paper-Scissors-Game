@@ -1,14 +1,18 @@
-// variables for the buttons
+// variables for the buttons. When passing an ID or Class into a selector, ids use the "#" and class uses a "."
 const buttons = document.querySelectorAll('.choices');
-const rock = document.querySelector('.rock');
-const paper = document.querySelector('.paper');
-const scissors = document.querySelector('.scissors');
+const rock = document.querySelector('#rock');
+const paper = document.querySelector('#paper');
+const scissors = document.querySelector('#scissors');
 
 // variables for div and text in HTML
-const selections = document.querySelector('.selections');
-const roundOutcome = document.querySelector('.roundOutcome');
-const points = document.querySelector('.points');
-const gameOver = document.querySelector('.gameOver');
+const selections = document.querySelector('#selections');
+const roundOutcome = document.querySelector('#roundOutcome');
+const points = document.querySelector('#points');
+const gameOver = document.querySelector('#gameOver');
+
+rock.addEventListener('click', () => runGame("rock"));
+paper.addEventListener('click', () => runGame("paper"));
+scissors.addEventListener('click', () => runGame("scissors"));
 
 let playerScore = 0;
 let computerScore = 0;
@@ -21,12 +25,11 @@ const rps = ["rock", "paper", "scissors"];
 function computerPlay() {
   return rps[Math.floor(Math.random() * rps.length)];
 }
-let computerSelection = computerPlay().toLowerCase();
 
 // function playRound takes parameters of "playerSelection, computerSelection" to decide who wins the round. playerSelection is inputted through a prompt and is looking for "Rock, Paper, or Scissors". computerSelection is running the computerPlay() function to randomally select "Rock, Paper, Scissors" from the rps array.
 
 function playRound(playerSelection, computerSelection) {
-  } if (playerSelection === "rock" && computerSelection === "rock") {
+  if (playerSelection === "rock" && computerSelection === "rock") {
     selections.textContent = `Player selected: ${playerSelection}, Computer selected: ${computerSelection}.`
     roundOutcome.textContent = "It was a tie, you both choose rock."
     points.textContent = `User Score: ${playerScore} - Computer Score: ${computerScore}`
@@ -39,38 +42,49 @@ function playRound(playerSelection, computerSelection) {
       roundOutcome.textContent = "It was a tie, you both choose paper."
       points.textContent = `User Score: ${playerScore} - Computer Score: ${computerScore}`
   } else if (playerSelection === "rock" && computerSelection === "paper") {
-      computerScore++
-      selections.textContent `Player selected: ${playerSelection}, Computer selected: ${computerSelection}.`
+      computerScore++;
+      selections.textContent = `Player selected: ${playerSelection}, Computer selected: ${computerSelection}.`
       roundOutcome.textContent = "You lose, paper beats rock."
       points.textContent = `User Score: ${playerScore} - Computer Score: ${computerScore}`
   } else if (playerSelection === "rock" && computerSelection === "scissors") {
-      playerScore++  
+      playerScore++;
       selections.textContent = `Player selected: ${playerSelection}, Computer selected: ${computerSelection}.`
-      roundOutcome = "You win, rock beats scissors."
+      roundOutcome.textContent = "You win, rock beats scissors."
       points.textContent = `User Score: ${playerScore} - Computer Score: ${computerScore}`
   } else if (playerSelection === "paper" && computerSelection === "rock") {
-      playerScore++
+      playerScore++;
       selections.textContent = `Player selected: ${playerSelection}, Computer selected: ${computerSelection}.`
       roundOutcome.textContent = "You win, paper beats rock."
       points.textContent = `User Score: ${playerScore} - Computer Score: ${computerScore}`
   } else if (playerSelection === "paper" && computerSelection === "scissors") {
-      computerScore++  
+      computerScore++;
       selections.textContent = `Player selected: ${playerSelection}, Computer selected: ${computerSelection}.`
-      roundOutcome = "You lose, scissors beats paper."
+      roundOutcome.textContent = "You lose, scissors beats paper."
       points.textContent = `User Score: ${playerScore} - Computer Score: ${computerScore}`
   } else if (playerSelection === "scissors" && computerSelection === "rock") {
-      computerScore++  
+      computerScore++;
       selections.textContent = `Player selected: ${playerSelection}, Computer selected: ${computerSelection}.`
       roundOutcome.textContent = "You lose, rock beats scissors."
       points.TextContent = `User Score: ${playerScore} - Computer Score: ${computerScore}`
   } else if (playerSelection === "Scissors" && computerSelection === "paper") {
-      playerScore++  
+      playerScore++;
       selections.textContent = `Player selected: ${playerSelection}, Computer selected: ${computerSelection}.`
       roundOutcome.textContent = "You win, scissors beats paper."
       points.textContent = `User Score: ${playerScore} - Computer Score: ${computerScore}`
+  }
 }
 
-function gameEnd(playerscore, computerScore) {
+function endGame() {
+  return playerScore === 5 || computerScore === 5
+};
+
+function resetGame() {
+  playerScore = 0;
+  computerScore = 0;
+  gameOver.textContent = `New Game! User Score: ${playerScore} - Computer Score: ${computerScore}`;
+}
+
+function decideWinner() {
   if (playerScore === 5) {
     gameOver.textContent = `Game over. Player Wins! Player Score: ${playerScore} -- Computer Score: ${computerScore}`;
   } else if (computerScore === 5) {
@@ -78,22 +92,11 @@ function gameEnd(playerscore, computerScore) {
   }
 }
 
-function resetGame() {
-  playerScore = 0;
-  computerScore = 0;
-  gameTxt.textContent = 'New Game! User Score: ${playerScore} - Computer Score: ${computerScore}`';
-  console.log("New Game");
-}
-
-rock.addEventListener('click', () => runGame('rock'))
-paper.addEventListener('click', () => runGame('paper'));
-scissors.addEventListener('click', () => runGame('scissors'));
-
 function runGame(playerSelection) {
-  if(gameEnd()) {
+  if(endGame()) {
     resetGame();
   }
   const computerSelection = computerPlay();
   playRound(playerSelection, computerSelection)
-  gameEnd();
+  decideWinner();
 };
