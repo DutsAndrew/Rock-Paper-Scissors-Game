@@ -4,102 +4,25 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <script src="javascript.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Rock, Paper, Scissors Game</title>
 </head>
 <body>
-    <script>
-
-      console.log("Check, Check, Check");
-
-// const rps used as the baseline to refer to the 3 strings that can be used in the game.
-
-      const rps = ["Rock", "Paper", "Scissors"];
-      
-      let playerScore = 0;
-      let computerScore = 0;
-
-// function computerPlay() is used to select a random string from "rps". Math.Floor sets the number to 0, since Math.Random will select a number between 0 and 1; creating a decimal. Now that Math.Floor has set it to 0 you can fill the function with Math.Random and multiply by rps.length, which is 0-2, since the first string: "Rock" is [0] in the array set. "Paper" is [2]. And "Scissors" is [3].
-
-      function computerPlay() {
-        return rps[Math.floor(Math.random() * rps.length)];
-      }
-
-      function playerPlay() {
-        return prompt("Rock, Paper, or Scissor?")
-      }
-
-// function playRound takes parameters of "playerSelection, computerSelection" to decide who wins the round. playerSelection is inputted through a prompt and is looking for "Rock, Paper, or Scissors". computerSelection is running the computerPlay() function to randomally select "Rock, Paper, Scissors" from the rps array.
-
-      function playRound() {
-        playerSelection = playerPlay().toLowerCase();
-        computerSelection = computerPlay().toLowerCase();
-        if (playerSelection === "rock" && computerSelection === "rock") {
-          return (`Player selected: ${playerSelection}, Computer selected: ${computerSelection}.
-          It was a tie, you both choose rock.
-          User Score: ${playerScore} - Computer Score: ${computerScore}`)
-        } else if (playerSelection === "scissors" && computerSelection === "scissors") {
-            return (`Player selected: ${playerSelection}, Computer selected: ${computerSelection}.
-            It was a tie, you both choose scissors.
-            User Score: ${playerScore} - Computer Score: ${computerScore}`)
-        } else if (playerSelection === "paper" && computerSelection === "paper") {
-            return(`Player selected: ${playerSelection}, Computer selected: ${computerSelection}.
-            It was a tie, you both choose paper.
-            User Score: ${playerScore} - Computer Score: ${computerScore}`)
-        } else if (playerSelection === "rock" && computerSelection === "paper") {
-            computerScore++
-            return (`Player selected: ${playerSelection}, Computer selected: ${computerSelection}.
-            You lose, paper beats rock.
-            User Score: ${playerScore} - Computer Score: ${computerScore}`)
-        } else if (playerSelection === "rock" && computerSelection === "scissors") {
-            playerScore++  
-            return (`Player selected: ${playerSelection}, Computer selected: ${computerSelection}.
-            You win, rock beats scissors.
-            User Score: ${playerScore} - Computer Score: ${computerScore}`)
-        } else if (playerSelection === "paper" && computerSelection === "rock") {
-            playerScore++
-            return(`Player selected: ${playerSelection}, Computer selected: ${computerSelection}.
-            You win, paper beats rock.
-            User Score: ${playerScore} - Computer Score: ${computerScore}`)
-        } else if (playerSelection === "paper" && computerSelection === "scissors") {
-            computerScore++  
-            return (`Player selected: ${playerSelection}, Computer selected: ${computerSelection}.
-            You lose, scissors beats paper.
-            User Score: ${playerScore} - Computer Score: ${computerScore}`)
-        } else if (playerSelection === "scissors" && computerSelection === "rock") {
-            computerScore++  
-            return (`Player selected: ${playerSelection}, Computer selected: ${computerSelection}.
-            You lose, rock beats scissors.
-            User Score: ${playerScore} - Computer Score: ${computerScore}`)
-        } else if (playerSelection === "Scissors" && computerSelection === "paper") {
-            playerScore++  
-            return (`Player selected: ${playerSelection}, Computer selected: ${computerSelection}.
-            You win, scissors beats paper.
-            User Score: ${playerScore} - Computer Score: ${computerScore}`)
-        } else {
-            return ("Something went terribly wrong :(")
-        }
-      }
-
-      function runGame() {
-        console.log(playRound());
-        console.log(playRound());
-        console.log(playRound());
-        console.log(playRound());
-        console.log(playRound());
-
-          if (playerScore === 5) {
-            console.log(`Game over. Player Wins! ${playerScore}`)
-          } else if (computerScore === 5) {
-            console.log(`Game over. Computer Wins! Better luck next time. ${computerScore}`)
-          } else if (playerScore < 5 && computerScore < 5) {
-            runGame();
-          } else {
-            runGame();
-          }
-      }
-
-      runGame();
-
-    </script>
+  <div class="content">
+    <h1 class="title"><strong>Rock Paper Scissors Game</strong></h1>
+    <div class="weapon"><em>Choose your weapon:</em></div>
+    <div class="choices">
+      <button class="btn" id="rock"><img src="rock.jpg"></button>
+      <button class="btn" id="paper"><img src="paper.jpg"></button>
+      <button class="btn" id="scissors"><img src="scissors.jpg"></button>
+    </div>
+    <div class="gameResponses">
+      <p id="selections"></p>
+      <p id="roundOutcome"></p>
+      <p id="points"></p>
+      <p id="gameOver"></p>
+  </div>
+</div>
 </body>
 </html>

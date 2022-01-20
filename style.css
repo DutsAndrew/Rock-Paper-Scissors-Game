@@ -1,0 +1,55 @@
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    margin: auto;
+    min-height: 100vh;
+    display: flex;
+    flex-flow: column nowrap;
+    width: fit-content;
+    height: fit-content;
+    background-color: beige;
+}
+
+img {
+    height: 300px;
+    width: 350px;
+}
+
+.content {
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.title {
+    justify-content: center;
+    align-items: center;
+    color: burlywood;
+    font-size: 36px;
+}
+
+.weapon {
+    font-size: 24px;
+    color: darkgoldenrod;
+    padding: 10px;
+}
+
+.choices {
+    flex: auto;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 10px;
+}
+
+.gameResponses {
+    padding: 10px;
+    color: darksalmon;
+    font-size: 18px;
+    font-weight: 600;
+}
