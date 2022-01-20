@@ -10,10 +10,12 @@ const roundOutcome = document.querySelector('#roundOutcome');
 const points = document.querySelector('#points');
 const gameOver = document.querySelector('#gameOver');
 
+// Event listeners that listen for a click on the buttons: rock, paper, and scissors. The arrow function sends the 'click', to runGame with the parameter "rock", "paper", or "scissors".
 rock.addEventListener('click', () => runGame("rock"));
 paper.addEventListener('click', () => runGame("paper"));
 scissors.addEventListener('click', () => runGame("scissors"));
 
+// place holders for scoreboard
 let playerScore = 0;
 let computerScore = 0;
 
@@ -21,13 +23,11 @@ let computerScore = 0;
 const rps = ["rock", "paper", "scissors"];
 
 // function computerPlay() is used to select a random string from "rps". Math.Floor sets the number to 0, since Math.Random will select a number between 0 and 1; creating a decimal. Now that Math.Floor has set it to 0 you can fill the function with Math.Random and multiply by rps.length, which is 0-2, since the first string: "Rock" is [0] in the array set. "Paper" is [2]. And "Scissors" is [3].
-
 function computerPlay() {
   return rps[Math.floor(Math.random() * rps.length)];
 }
 
 // function playRound takes parameters of "playerSelection, computerSelection" to decide who wins the round. playerSelection is inputted through a prompt and is looking for "Rock, Paper, or Scissors". computerSelection is running the computerPlay() function to randomally select "Rock, Paper, Scissors" from the rps array.
-
 function playRound(playerSelection, computerSelection) {
   if (playerSelection === "rock" && computerSelection === "rock") {
     selections.textContent = `Player selected: ${playerSelection}, Computer selected: ${computerSelection}.`
@@ -74,16 +74,19 @@ function playRound(playerSelection, computerSelection) {
   }
 }
 
+// check if the game has ended.
 function endGame() {
   return playerScore === 5 || computerScore === 5
 };
 
+// resets game if endGame() conditions are met in runGame().
 function resetGame() {
   playerScore = 0;
   computerScore = 0;
   gameOver.textContent = `New Game! User Score: ${playerScore} - Computer Score: ${computerScore}`;
 }
 
+// Checks if there is a winner, sends out a text with scores if there is.
 function decideWinner() {
   if (playerScore === 5) {
     gameOver.textContent = `Game over. Player Wins! Player Score: ${playerScore} -- Computer Score: ${computerScore}`;
@@ -92,6 +95,7 @@ function decideWinner() {
   }
 }
 
+// runGame is taking in a parameter 'playerSelection', so even though there is no variable defining playerSelection, this function will define it when it passes the parameter. Currently, the addEventListeners at the top of the page are sending "rock", "paper", or "scissors" to this code that will be passed as the playerSelection on a 'click'. From here runGame will check the endGame() function to see if the playerScore or computerScore === 5, if it does it will call resetGame() and return user scores to 0 and send the accompanying text. If those conditions aren't met then the runGame() function will continue gathering the computerSelection through the computerPlay() function. Once both the playerSelection and the computerSelection have been gathered both will be sent into the playRound() function as parameters. Once the playRound() function runs it will then finalize the last call: decideWinner() to see if there is a winner, else it will stop and wait for the user to register another click to start another round.
 function runGame(playerSelection) {
   if(endGame()) {
     resetGame();

@@ -1,4 +1,16 @@
 # rock-paper-scissors
+// This is my second write-up on January 20, 2022 after creating and finalizing a UI using addEventListeners, querySelectors, and DOM manipulation methods.
+
+1. My code was semi-broken when starting this task it took me a little too long figure out that I had a end bracket randomally placed at the beginning of the playRound() function that was calling it and then not running the code that was supposed to be inside. I learned from that experience that I need to read through the code that is there before beginning to work, even though the original code was mine and I had written it the month prior.
+
+2. addEventListeners were not tricky to get working, but they were tricky when assigning them to functions. In this particular example I learned that I did not need to create a variable for the playerSelection, even though I spent a lot of time trying to do so. I could just create a function that took in a parameter titled playerSelection and then create an addEventListener that sends that parameter to the function, which will label it the playerSelection.
+
+3. A big misconception that I had going into this project was that with dom manipulation using querySelectors you don't universally use the "#" to select a dom node. The "#" is used for IDs, which at most apply to one element; whereas, the "." is used to select classes, which can apply to multiple elements. For example, a div that contains a bunch of buttons would use a "." so you can grab all of buttons inside of it and manipulate them using the class element. The ID "#" could be used to manipulate a single button to adjust things that that button would need.
+
+4. I think I'm still falling into the trap of wanting to create a function that does a one size fits all approach, which I learned is not the best way to do things. But, I think my want to do so comes from not wanting to call other functions inside a function and worrying about the interconnectivity of them all. However, from this project, the runGame() function was a good practice to make sure that I understood and utilized how to run function inside each other.
+
+**********************************
+// This was my initial write-up on Dec 21, 2021 after writing the console.log version of the game that ran in a computer terminal:
 
 This is a coding project to demonstrate my knowledge of basic JavaScript.
 
