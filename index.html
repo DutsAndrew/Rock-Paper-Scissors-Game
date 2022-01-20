@@ -5,19 +5,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="javascript.js" defer></script>
-    <title>Rock, Paper, Scissors</title>
+    <link rel="stylesheet" href="style.css">
+    <title>Rock, Paper, Scissors Game</title>
 </head>
 <body>
-  <div class="choices">
-    <button class="btn" id="rock"><img src="rock.jpg"></button>
-    <button class="btn" id="paper"><img src="paper.jpg"></button>
-    <button class="btn" id="scissors"><img src="scissors.jpg"></button>
+  <div class="content">
+    <h1 class="title"><strong>Rock Paper Scissors Game</strong></h1>
+    <div class="weapon"><em>Choose your weapon:</em></div>
+    <div class="choices">
+      <button class="btn" id="rock"><img src="rock.jpg"></button>
+      <button class="btn" id="paper"><img src="paper.jpg"></button>
+      <button class="btn" id="scissors"><img src="scissors.jpg"></button>
+    </div>
+    <div class="gameResponses">
+      <p id="selections"></p>
+      <p id="roundOutcome"></p>
+      <p id="points"></p>
+      <p id="gameOver"></p>
   </div>
-  <div class="gameResponses">
-    <p id="selections"></p>
-    <p id="roundOutcome"></p>
-    <p id="points"></p>
-    <p id="gameOver"></p>
-  </div>
+</div>
 </body>
 </html>
