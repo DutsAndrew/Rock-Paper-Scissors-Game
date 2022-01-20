@@ -44,4 +44,12 @@ img {
     flex-flow: row nowrap;
     justify-content: center;
     align-items: center;
+    padding-bottom: 10px;
+}
+
+.gameResponses {
+    padding: 10px;
+    color: darksalmon;
+    font-size: 18px;
+    font-weight: 600;
 }
